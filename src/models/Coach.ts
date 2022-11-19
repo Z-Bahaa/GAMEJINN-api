@@ -13,10 +13,9 @@ interface coachSchema extends Document {
   about: string;
   availableAt: string;
   price: {
-    amount: number,
-    currency: string,
+    min: number,
+    max: number,
   };
-  offeredSessions: Array<string>;
 }
 
 const coachSchema = new Schema<coachSchema>({
@@ -45,11 +44,6 @@ const coachSchema = new Schema<coachSchema>({
   }],
   offeredServices: [{
     type: String,
-    required: false,
-  }],
-  offeredSessions: [{
-    type: String,
-    required: false,
   }],
   achievements: [{
     type: String,
@@ -58,7 +52,11 @@ const coachSchema = new Schema<coachSchema>({
   languages: [{
     type: String,
     required: false,
-  }]
+  }],
+  price: {
+    min: Number,
+    max: Number,
+  }
 }, { timestamps: true });
 
 coachSchema.plugin(mongoosePaginate);

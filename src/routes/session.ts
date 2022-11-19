@@ -1,13 +1,14 @@
 import { Router, Request } from 'express'
+import Coach from '../models/Coach'
 import Session from '../models/Session'
 
 const sessionsRouter = Router()
 
-sessionsRouter.post('/add', (req, res) => {
-  const session = new Session({
+sessionsRouter.post('/add', async (req, res) => {
+  const session = await new Session({
     ...req.body
   })
-  session.save()
+  await session.save()
     .then(() => { res.status(201).send(session)})
     .catch((err: any) => { res.send(err) });
 })

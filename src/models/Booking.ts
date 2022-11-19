@@ -20,13 +20,13 @@ interface bookingSchema extends Document {
 const bookingSchema = new Schema<bookingSchema>({
   product: {
     sessionId: {
-      type: String;
+      type: String,
     },
     date: {
-      type: Date;
+      type: Date,
     },
     time: {
-      type: Date;
+      type: Date,
     },
   },
   contact: {
